@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vault-issuer
+  namespace: wordpress
+spec:
+  vault:
+    server: http://vault.vault:8200
+    path: pki/sign/sue-workshop-nl
+    auth:
+      kubernetes:
+        mountPath: /v1/auth/kubernetes
+        role: sue-workshop-issuer
+        secretRef:
+          name: issuer-token-lmzpj 
+          key: token

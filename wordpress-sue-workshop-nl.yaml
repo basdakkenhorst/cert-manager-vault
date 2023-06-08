@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wordpress-sue-workshop-nl
+  namespace: wordpress
+spec:
+  secretName: wordpress-sue-workshop-tls
+  issuerRef:
+    name: vault-issuer
+  commonName: wordpress.sue-workshop.nl
+  dnsNames:
+  - wordpress.sue-workshop.nl

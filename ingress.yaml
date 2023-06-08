@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wordpress-ingress
+  namespace: wordpress
+spec:
+  tls:
+  - hosts:
+      - wordpress.sue-workshop.nl
+    secretName: wordpress-sue-workshop-tls 
+  rules:
+    - host: wordpress.sue-workshop.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wordpress-sue-workshop
+                port:
+                  number: 80
